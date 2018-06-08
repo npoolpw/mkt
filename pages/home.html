@@ -403,6 +403,7 @@
             updateText('paymentThresholdSymbol', lastStats.config.symbol);
 
             calcEstimateProfit();
+            getPaymentLevel();
         }
     };
 
@@ -700,10 +701,23 @@
         }
     }
 
-    function loadStatistics () {        
+    function loadStatistics() {        
         $.get(api + '/stats', function (stats) {
             if (stats) {
                 showStats(stats)
+            }
+        });      
+    }
+	
+    function getPaymentLevel() {        
+	var address = document.getElementById('yourStatsInput').value;
+	if(address=='')
+        {
+	    return;
+        }
+        $.get(api + '/get_miner_payout_level?address='+address, function (data) {
+            if (data) {
+                document.getElementById('yourPaymentThreshold').value = data.level;
             }
         });      
     }
