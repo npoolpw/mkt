@@ -403,7 +403,6 @@
             updateText('paymentThresholdSymbol', lastStats.config.symbol);
 
             calcEstimateProfit();
-            getPaymentLevel();
         }
     };
 
@@ -708,7 +707,8 @@
             }
         });      
     }
-	
+
+    getPaymentLevel();
     function getPaymentLevel() {        
 	var address = document.getElementById('yourStatsInput').value;
 	if(address=='')
