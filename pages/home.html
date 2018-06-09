@@ -710,9 +710,10 @@
 
     getPaymentLevel();
     function getPaymentLevel() {        
-	var address = document.getElementById('yourStatsInput').value;
-	if(address=='')
+	var address = $('#yourStatsInput').val().trim();
+	if(!address)
         {
+	    $('#yourStatsInput').focus();
 	    return;
         }
         $.get(api + '/get_miner_payout_level?address='+address, function (data) {
@@ -721,6 +722,42 @@
             }
         });      
     }
+
+    $('#setUp').click(function(){
+        var address = $('#yourStatsInput').val().trim();
+        var ip = $('#yourIp').val().trim();
+        var level = $('#yourPaymentThreshold').val().trim();
+        if (!address){
+            $('#yourStatsInput').focus();
+            return;
+        }
+        if (!ip){
+            $('#yourIp').focus();
+            return;
+        }
+        if (!level){
+            $('#yourPaymentThreshold').focus();
+            return;
+        }
+
+        $('#setUp').attr('enabled', false);
+        $.ajax({
+	    url : api+'/get_miner_payout_level,
+            data : {
+	        address: address,
+                ip: ip,
+                level: level
+	    },
+            dataType: 'json',
+            cache: 'false',
+            success: function(data){
+                console.log(data);
+            },
+            complete: function(){
+                $('#setUp').attr('enabled', true);
+	    }
+	});
+    });
 
     function showStats (stats) {
         $('#cur_diff').text(stats.network.difficulty);
