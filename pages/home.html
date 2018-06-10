@@ -366,7 +366,7 @@
 
             updateText('networkHashrate', getReadableHashRateString(lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) + '/sec');
             updateText('networkDifficulty', lastStats.network.difficulty.toString());
-            updateTextLinkable('blockchainHeight', lastStats.explorer.height>0?lastStats.network.height.toString()+' | '+lastStats.explorer.height+' <span class="fa fa-question-circle"></span>':lastStats.network.height.toString());
+            updateTextLinkable('blockchainHeight', lastStats.explorer.height>0?lastStats.network.height.toString()+' | '+lastStats.explorer.height+' <span class="fa fa-question-circle" title="Explorer Height" data-toggle="tooltip"></span>':lastStats.network.height.toString()+' <span class="fa fa-question-circle" title="Pool Daemon Height" data-toggle="tooltip"></span>');
             updateText('networkLastReward', getReadableCoins(lastStats.network.reward, 4));
             updateText('lastHash', lastStats.network.hash.substr(0, 13) + '...').setAttribute('href', getBlockchainUrl(lastStats.network.hash));
 
