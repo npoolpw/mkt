@@ -207,7 +207,7 @@
 	        }
         };
 
-        $(function() {
+        $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
@@ -366,7 +366,7 @@
 
             updateText('networkHashrate', getReadableHashRateString(lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) + '/sec');
             updateText('networkDifficulty', lastStats.network.difficulty.toString());
-            updateTextLinkable('blockchainHeight', lastStats.explorer.height>0?lastStats.network.height.toString()+' <span class="fa fa-question-circle" data-toggle="tooltip" title="Pool Daemon Height"></span> | '+lastStats.explorer.height+' <span class="fa fa-question-circle" data-toggle="tooltip" title="Explorer Height"></span>':lastStats.network.height.toString());
+            updateTextLinkable('blockchainHeight', lastStats.explorer.height>0?lastStats.network.height.toString()+' | '+lastStats.explorer.height+' <span class="fa fa-question-circle" data-toggle="tooltip" title="Explorer height, stop mining if not equal with the left side!"></span>':lastStats.network.height.toString());
             updateText('networkLastReward', getReadableCoins(lastStats.network.reward, 4));
             updateText('lastHash', lastStats.network.hash.substr(0, 13) + '...').setAttribute('href', getBlockchainUrl(lastStats.network.hash));
 
