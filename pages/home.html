@@ -95,7 +95,7 @@
         <div><i class="fa fa-tachometer"></i> Hash Rate: <span id="networkHashrate"></span></div>
         <div><i class="fa fa-clock-o"></i> Block Found: <span id="networkLastBlockFound"></span></div>
         <div><i class="fa fa-unlock-alt"></i> Difficulty: <span id="networkDifficulty"></span></div>
-        <div><i class="fa fa-bars"></i> Blockchain Height: <span id="blockchainHeight"></span><span id="explorerHeight"></span></div>
+        <div><i class="fa fa-bars"></i> Blockchain Height: <span id="blockchainHeight"></span></div>
         <div><i class="fa fa-money"></i> Last Reward: <span id="networkLastReward"></span></div>
         <div><i class="fa fa-paw"></i> Last Hash: <a id="lastHash" target="_blank"></a></div>
     </div>
@@ -366,7 +366,7 @@
 
             updateText('networkHashrate', getReadableHashRateString(lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) + '/sec');
             updateText('networkDifficulty', lastStats.network.difficulty.toString());
-            updateTextLinkable('blockchainHeight', lastStats.explorer.height>0?lastStats.network.height.toString()+' | <span class="fa fa-question">'+lastStats.explorer.height+'</span>':lastStats.network.height.toString());
+            updateTextLinkable('blockchainHeight', lastStats.explorer.height>0?lastStats.network.height.toString()+' | '+lastStats.explorer.height+' <span class="fa fa-question-circle"></span>':lastStats.network.height.toString());
             updateText('networkLastReward', getReadableCoins(lastStats.network.reward, 4));
             updateText('lastHash', lastStats.network.hash.substr(0, 13) + '...').setAttribute('href', getBlockchainUrl(lastStats.network.hash));
 
