@@ -402,6 +402,10 @@
             updateText('calcHashSymbol', lastStats.config.symbol);
             updateText('paymentThresholdSymbol', lastStats.config.symbol);
 
+            if(lastStats.explorer.height>0 && Math.abs(lastStats.explorer.height-lastStats.network.height)>5) {
+                updateTextLinkable('siteInfo', '<div class="alert alert-danger" role="alert">Blockchain height at pool and explorer not synced. Please report to pool admin.</div>');
+	    }
+
             calcEstimateProfit();
         }
     };
